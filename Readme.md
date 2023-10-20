@@ -2,6 +2,11 @@
 
 Node.js is a powerful and popular JavaScript runtime that allows you to run JavaScript on the server-side. It is built on Chrome's V8 JavaScript engine and provides a platform for building scalable, high-performance network applications. In this README, we will cover the basics of Node.js, including its architecture, installation, and some essential concepts.
 
+<div align="center">
+<img src="https://raw.githubusercontent.com/ayushsarode/NodeJS-Learning-Kit/main/images/nodejs.png" alt="Node.JS-Logo" style="width: 50%; height: 50%;">
+</div>
+
+
 ## Table of Contents
 - [What is Node.js?](#what-is-nodejs)
 - [How Node.js is Built](#how-nodejs-is-built)
