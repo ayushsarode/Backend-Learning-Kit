@@ -1,8 +1,4 @@
-# Express.js Starter
-
-Welcome to the [Your Project Name] repository! This project is built using Express.js, a fast, unopinionated, minimalist web framework for Node.js.
-
-## What is Express.js?
+# What is Express.js?
 
 Express.js is a web application framework for Node.js, designed for building web and mobile applications. It is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node-based web applications.
 
