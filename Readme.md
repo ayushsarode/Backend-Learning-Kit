@@ -5,7 +5,6 @@ Node.js is a powerful and popular JavaScript runtime that allows you to run Java
 <br>
 <div align="center">
    <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fayushsarode%2FNodeJS-Learning-Kit&label=visitors&countColor=%2337d67a&style=for-the-badge&labelStyle=upper" />
-   <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fayushsarode%2FNodeJS-Learning-Kit&label=visitors&countColor=%2337d67a&style=for-the-badge&labelStyle=upper" />
 <img src="https://img.shields.io/github/stars/ayushsarode/NodeJS-Learning-Kit?style=for-the-badge" />
 <br>
 <br>
