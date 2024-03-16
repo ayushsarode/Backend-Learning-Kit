@@ -20,7 +20,7 @@ To get started with the Backend Learning Kit:
 
 ## Contributing
 
-If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
+If you find any issues or have suggestions for improvements, feel free to open an issue and submit a pull request.
 
 Happy learning!
 
