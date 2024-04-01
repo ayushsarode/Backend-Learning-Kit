@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -33,7 +32,7 @@ const BollywoodMovie = async () => {
     }
 
     BollywoodMovie()
-
+}
 
     const MultipleInsert = async () => {
         try {
@@ -62,3 +61,8 @@ const BollywoodMovie = async () => {
     app.listen(port, () => {
         console.log(`Server is running on http://localhost:${port}`);
     });
+
+
+
+
+
