@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 
-mongoose.connect("mongodb://127.0.0.1:27017/StudentData").then(() => {
+mongoose.connect("mongodb://localhost:27017/MoviesData").then(() => {
     console.log("Connected to MongoDB succesfully")
 }).catch((err) => {
     console.log(err);
@@ -13,27 +13,52 @@ mongoose.connect("mongodb://127.0.0.1:27017/StudentData").then(() => {
 
 
 
-const student = mongoose.Schema({
+const Datainsertion = mongoose.Schema({
     name: String,
-    RollNum: Number,
-    FeesPaid: Boolean,
-
+    Genre: String
 })
 
-const Student = mongoose.model("Student", student)
+const Movie = mongoose.model("MoviesData", Datainsertion)
+
+// single doc insert
+const BollywoodMovie = async () => {
+    try {
+        const Bollywood = new Movie({
+            name: "Rockstar",
+            Genre: "Triller"
+        })
+        await Bollywood.save();
+    } catch (err) {
+        console.log(err);
+    }
+
+    BollywoodMovie()
 
 
-const Adder = async () => {
-    const CreateStud = new Student({
-        name: "Ayush",
-        RollNum: 13,
-        FeesPaid: true
-    })
-    await CreateStud.save();
-}
-Adder()
+    const MultipleInsert = async () => {
+        try {
+            const Anime = new Movie({
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+                name: "Your name",
+                Genre: "Fantasy"
+            })
+
+            const Hollywood = new Movie({
+                name: "Inglorious Bastard",
+                Genre: "History"
+            })
+            const Tollywood = new Movie
+            const result = await Movie.insertMany([Anime, Hollywood])
+            console.log(result);
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
+    MultipleInsert()
+
+    // Start the server
+    app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+    });
