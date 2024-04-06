@@ -13,8 +13,15 @@ mongoose.connect("mongodb://localhost:27017/MoviesData").then(() => {
 
 
 const Datainsertion = mongoose.Schema({
-    name: String,
-    Genre: String
+    name: {
+        type: String,
+        unique: true
+    },
+    Genre: String,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 const Movie = mongoose.model("MoviesData", Datainsertion)
@@ -31,36 +38,37 @@ const BollywoodMovie = async () => {
         console.log(err);
     }
 
-    BollywoodMovie()
+
 }
+BollywoodMovie()
 
-    const MultipleInsert = async () => {
-        try {
-            const Anime = new Movie({
+const MultipleInsert = async () => {
+    try {
+        const Anime = new Movie({
 
-                name: "Your name",
-                Genre: "Fantasy"
-            })
+            name: "Your name",
+            Genre: "Fantasy"
+        })
 
-            const Hollywood = new Movie({
-                name: "Inglorious Bastard",
-                Genre: "History"
-            })
-            const Tollywood = new Movie
-            const result = await Movie.insertMany([Anime, Hollywood])
-            console.log(result);
-        } catch (err) {
-            console.log(err);
-        }
-
+        const Hollywood = new Movie({
+            name: "Inglorious Bastard",
+            Genre: "History"
+        })
+        const Tollywood = new Movie
+        const result = await Movie.insertMany([Anime, Hollywood])
+        console.log(result);
+    } catch (err) {
+        console.log(err);
     }
 
-    MultipleInsert()
+}
 
-    // Start the server
-    app.listen(port, () => {
-        console.log(`Server is running on http://localhost:${port}`);
-    });
+MultipleInsert()
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
 
 
 
