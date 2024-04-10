@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node src/script.js",
+    "dev": "nodemon src/script.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.3.0",
+    "validator": "^13.11.0"
+  }
+}
