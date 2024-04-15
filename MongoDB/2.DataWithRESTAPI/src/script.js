@@ -12,17 +12,49 @@ app.use(express.json())
 app.get("/students", async (req, res) => {
     try {
         // Fetch student data from the database
-        const studentData = await StudentModel.find();
+        const studentsData = await StudentModel.find();
 
         // Format student data into <li> elements
-        const studentListItems = studentData.map(student => `<li>${student.name}</li><li>${student.email}</li> <br>`).join('');
+        // const studentListItems = studentData.map(student => `<li>${student.name}</li><li>${student.email}</li> <br>`).join('');
 
         // Send the formatted list as HTML
-        res.send(`<ul>${studentListItems}</ul>`);
+        // res.send(`<ul>${studentListItems}</ul>`);
+        res.send(studentsData)
     } catch (error) {
         res.send(error);
     }
 });
+
+
+
+//getting data dynamacally by id
+app.get("/students/:id", async(req, res) => {
+    try {
+        const _id = req.params.id; 
+        
+        const studentData = await StudentModel.findById(_id); 
+        
+        console.log(studentData);
+
+        if (!studentData) {
+            return res.status(404).send();
+        } else {
+            res.send(studentData);
+        }
+    } catch (error) {
+        // Handle errors here
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
+
+
+
+
+
 
 // app.post('/students'), (req, res) => {
 //     console.log(req.body);
