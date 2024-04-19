@@ -81,6 +81,18 @@ app.post("/students", async (req, res) => {
 })
 
 
+//update user 
+
+app.patch("/students/:id", async(req,res) => {
+    try {
+        const _id = req.params.id;
+        const updateStudent = await StudentModel.findByIdAndUpdate(_id, req.body);
+        res.send(updateStudent);
+    } catch (error) {
+        res.status(404).send(error);
+    }
+})
+
 
 
 
