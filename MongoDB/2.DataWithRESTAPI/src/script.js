@@ -28,12 +28,12 @@ app.get("/students", async (req, res) => {
 
 
 //getting data dynamacally by id
-app.get("/students/:id", async(req, res) => {
+app.get("/students/:id", async (req, res) => {
     try {
-        const _id = req.params.id; 
-        
-        const studentData = await StudentModel.findById(_id); 
-        
+        const _id = req.params.id;
+
+        const studentData = await StudentModel.findById(_id);
+
         console.log(studentData);
 
         if (!studentData) {
@@ -82,8 +82,7 @@ app.post("/students", async (req, res) => {
 
 
 //update user 
-
-app.patch("/students/:id", async(req,res) => {
+app.patch("/students/:id", async (req, res) => {
     try {
         const _id = req.params.id;
         const updateStudent = await StudentModel.findByIdAndUpdate(_id, req.body);
@@ -94,8 +93,23 @@ app.patch("/students/:id", async(req,res) => {
 })
 
 
+// delete by id
+app.delete("/students/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const deleteStudent = await StudentModel.findByIdAndDelete(id);
+
+        res.send(deleteStudent)
+        console.log("User Deleted Succesfully");
+    } catch (error) {
+        res.status(404).send(error)
+        console.log(error.message);
+    }
+})
 
 
+
+gi
 app.listen(port, () => {
     console.log(`PORT ${port} is running `);
 })
