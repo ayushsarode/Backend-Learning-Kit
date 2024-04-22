@@ -1,5 +1,8 @@
 # MVC (Model-View-Controller) Architecture
 
+![MVC IMAGE](assets/MVC3.png)
+
+
 MVC is a software design pattern commonly used for developing user interfaces. It separates an application into three interconnected components: Model, View, and Controller. Here's a brief overview of each component:
 
 ### Model
