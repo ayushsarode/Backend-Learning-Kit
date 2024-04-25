@@ -109,7 +109,6 @@ app.delete("/students/:id", async (req, res) => {
 
 
 
-gi
 app.listen(port, () => {
     console.log(`PORT ${port} is running `);
 })
