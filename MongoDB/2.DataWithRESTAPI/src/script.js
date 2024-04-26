@@ -10,19 +10,7 @@ app.use(express.json())
 // after sending data if it shows undefined, to recognize the incoming we have to use express.json() method. it is a middleware
 
 app.get("/students", async (req, res) => {
-    try {
-        // Fetch student data from the database
-        const studentsData = await StudentModel.find();
-
-        // Format student data into <li> elements
-        // const studentListItems = studentData.map(student => `<li>${student.name}</li><li>${student.email}</li> <br>`).join('');
-
-        // Send the formatted list as HTML
-        // res.send(`<ul>${studentListItems}</ul>`);
-        res.send(studentsData)
-    } catch (error) {
-        res.send(error);
-    }
+    
 });
 
 
