@@ -10,7 +10,7 @@ app.use(express.json())
 // after sending data if it shows undefined, to recognize the incoming we have to use express.json() method. it is a middleware
 
 app.get("/students", async (req, res) => {
-    
+    re
 });
 
 
