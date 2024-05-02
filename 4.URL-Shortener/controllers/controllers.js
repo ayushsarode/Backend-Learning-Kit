@@ -1,4 +1,4 @@
-const shortid  = require('shortid')
+const shortid = require('shortid')
 const URL = require("../models/url");
 
 async function handleGenerateShortUrl(req, res) {
@@ -13,9 +13,20 @@ async function handleGenerateShortUrl(req, res) {
         }
     );
     return res.json({ id: shortID })
-    res.send("hiii")
+
 }
 
+async function handleGetAnalytics(req, res) {
+    const shortId = req.params.shortId;
+    const result = await URL.findOne({ shortId });
+    return res.json({
+        totalClicks: result.visitHistory.length,
+        analytics: result.visitHistory,
+    });
+}
+
+
 module.exports = {
-    handleGenerateShortUrl
+    handleGenerateShortUrl,
+    handleGetAnalytics
 };

@@ -58,7 +58,8 @@ app.get("/students/:id", async (req, res) => {
 
 app.post("/students", async (req, res) => {
     try {
-        const user = new StudentModel(req.body);
+        const newUser = req.body 
+        const user = new StudentModel(newUser);
 
         const createUser = await user.save();
         res.status(201).send(createUser);
