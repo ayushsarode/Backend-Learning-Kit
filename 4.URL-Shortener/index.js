@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path")
 const { connectToMongoDB } = require('./connection')
 const URL = require("./models/url")
-
+const staticRoute  = require('./routes/staticRouter')
 const app = express()
 const PORT = process.env.PORT || 8000;
 
@@ -17,6 +17,8 @@ app.set('view engine', "ejs");
 app.set('views', path.resolve("./views"))
 
 app.use(express.json());
+app.use('/', staticRoute)
+app.use(express.urlencoded({extended:false}))
 
 app.use("/url", urlRoute);
 
@@ -26,9 +28,7 @@ app.get("/test", async(req,res) => {
         {
             urls:allUrls,
             
-        },
-        
-    );
+        });
 });
 
 app.get("/:shortId", async (req, res) => {

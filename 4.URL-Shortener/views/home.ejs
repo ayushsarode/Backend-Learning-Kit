@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJS</title>
 </head>
+
 <body>
-    <h1>Short Links</h1>
-    <% urls.forEach(url => { %>
-     <li> <%= url.shortId %></li>
-    <% }) %>
+    <h1>URL Shortener</h1>
+    <% if (locals.id) { %>
+        <p>URL Generated: http://localhost:8000/<%= id %>
+                <% } %>
+                    <div>
+                        <form method="POST" action="/url">
+                            <label style="font-size: 20px;">Enter Your Original URL: </label>
+                            <input type="text" placeholder="https://example.com" name='url' size="30" id="inputbox">
+                            <button type="submit" style="font-size: 20px;">Generate</button>
+                        </form>
+                    </div>
+                    <% if (urls && urls.length> 0) { %>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>S. no</th>
+                                    <th>ShortID</th>
+                                    <th>Redirect</th>
+                                    <th>Clicks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                        </table>
+                        <hr> <!-- Add a horizontal line -->
+                        <% urls.forEach((url, index)=> { %>
+                            <div>
+                                <p><strong>S. no:</strong>
+                                    <%= index + 1 %>
+                                </p>
+                                <p><strong>ShortID:</strong>
+                                    <%= url.shortId %>
+                                </p>
+                                <p><strong>Redirect:</strong>
+                                    <%= url.redirectURL %>
+                                </p>
+                                <p><strong>Clicks:</strong>
+                                    <%= url.visitHistory %>
+                                </p>
+                            </div>
+                            <hr> <!-- Add a horizontal line -->
+                            <% }); %>
+                                <% } else { %>
+                                    <p>No URLs found</p>
+                                    <% } %>
+
+                                        <script>
+                                            document.getElementById('inputbox').style.height = "25px";
+                                        </script>
 </body>
+
 </html>
