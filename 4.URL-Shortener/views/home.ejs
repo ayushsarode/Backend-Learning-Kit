@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EJS</title>
+    <title>UrlShortner</title>
+
 </head>
 
 <body>
-    <h1>URL Shortener</h1>
-    <% if (locals.id) { %>
-        <p>URL Generated: http://localhost:8000/<%= id %>
-                <% } %>
-                    <div>
-                        <form method="POST" action="/url">
-                            <label style="font-size: 20px;">Enter Your Original URL: </label>
-                            <input type="text" placeholder="https://example.com" name='url' size="30" id="inputbox">
-                            <button type="submit" style="font-size: 20px;">Generate</button>
-                        </form>
-                    </div>
-                    <% if (urls && urls.length> 0) { %>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>S. no</th>
-                                    <th>ShortID</th>
-                                    <th>Redirect</th>
-                                    <th>Clicks</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                        </table>
-                        <hr> <!-- Add a horizontal line -->
-                        <% urls.forEach((url, index)=> { %>
-                            <div>
-                                <p><strong>S. no:</strong>
-                                    <%= index + 1 %>
-                                </p>
-                                <p><strong>ShortID:</strong>
-                                    <%= url.shortId %>
-                                </p>
-                                <p><strong>Redirect:</strong>
-                                    <%= url.redirectURL %>
-                                </p>
-                                <p><strong>Clicks:</strong>
-                                    <%= url.visitHistory %>
-                                </p>
-                            </div>
-                            <hr> <!-- Add a horizontal line -->
-                            <% }); %>
-                                <% } else { %>
-                                    <p>No URLs found</p>
-                                    <% } %>
+    <h1> URL Shortener</h1>
+    <form action="/url" method="POST">
+        <input type="text" name="url" placeholder="Enter URL" required>
+        <button type="submit">Generate</button>
+    </form>
+    <h1>URLs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Short Url</th>
+                <th>Original Url</th>
+                <th>Clicks</th>
+                <th>Created At</th>
+                <th>Updated At</th>
 
-                                        <script>
-                                            document.getElementById('inputbox').style.height = "25px";
-                                        </script>
+
+            </tr>
+        </thead>
+        <% urls.forEach(
+            (url) => {
+                %>
+                <tbody>
+                    <tr>
+                        <td><%= url.shortId %><br>
+                        <a href="/url/<%= url.shortId %>">Click Here</a>
+                        </td>
+                        <td><%= url.redirectURL %></td>
+                        <td><%= url.visitHistory.length %></td>
+                        <td><%= url.createdAt %></td>
+                        <td><%= url.updatedAt %></td>
+                    </tr>
+                </tbody>
+            
+            
+                 <%
+            }
+        ) %>
+    
+    
+   
+    
 </body>
-
 </html>
