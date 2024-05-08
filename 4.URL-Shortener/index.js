@@ -52,5 +52,5 @@ app.get("/:shortId", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`${PORT} is listening...`);
+    console.log(`http://localhost:${PORT} is listening...`);
 })
