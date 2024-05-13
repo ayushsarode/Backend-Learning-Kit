@@ -7,11 +7,65 @@
     <title>UrlShortner</title>
 
 </head>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    label,
+    input {
+        font-family: sans-serif;
+        padding-bottom: 10px;
+        font-size: 20px;
+        padding-bottom: 0px;
+    }
+
+    input {
+        height: 30px;
+        border-radius: 5px;
+    }
+
+    body {
+        color: white;
+        background: #000;
+    }
+
+    div {
+        align-items: center;
+        margin: 30px;
+    }
+
+    button {
+        background-color: white;
+        color: blue;
+        font-size: 25px;
+        border-radius: 5px;
+    }
+    button:hover {
+        border: solid white 2px;
+        background-color: black;
+        color: white;
+        transition: .4s;
+        cursor: pointer;
+    }
+</style>
 
 <body>
     <h1>URL Shortner</h1>
     <% if (locals.id) { %>
-        <p>URL Generated: http://localhost:8000/url/<%= id %>
+        <p class="textplace">URL Generated: http://localhost:8000/url/<%= id %>
         </p>
         <% } %>
             <div>
@@ -31,17 +85,25 @@
                             <th>Clicks</th>
                         </thead>
                         <tbody>
-                            <% urls.forEach((url, index) => { %>
+                            <% urls.forEach((url, index)=> { %>
                                 <tr>
-                                    <td><%= index + 1 %></td>
-                                    <td><%= url.shortId %></td>
-                                    <td><%= url.redirectURL %></td>
-                                    <td><%= url.visitHistory.length %></td>
+                                    <td>
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td>
+                                        <%= url.shortId %>
+                                    </td>
+                                    <td>
+                                        <%= url.redirectURL %>
+                                    </td>
+                                    <td>
+                                        <%= url.visitHistory.length %>
+                                    </td>
                                 </tr>
-                            <% }) %>
+                                <% }) %>
                         </tbody>
                     </table>
-                <% } %>
+                    <% } %>
             </div>
 </body>
 
