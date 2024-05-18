@@ -21,7 +21,9 @@
     }
 
     h1 {
-        text-align: center;
+        text-align: left;
+        margin: 0;
+        font-family: sans-serif;
     }
 
     label,
@@ -35,11 +37,17 @@
     input {
         height: 30px;
         border-radius: 5px;
+        border: none;
+        background-color: white;
+        border: 2px solid #2D3250;
     }
 
     body {
         color: white;
-        background: #000;
+        background: #424769;
+    }
+    table{
+        background: #2D3250;
     }
 
     div {
@@ -48,29 +56,31 @@
     }
 
     button {
-        background-color: white;
-        color: blue;
+        background-color: #2D3250;
+        color: white;
         font-size: 25px;
         border-radius: 5px;
+        border: none;
+        border: solid white 1px;
     }
     button:hover {
-        border: solid white 2px;
-        background-color: black;
-        color: white;
+        border: solid black 2px;
+        background-color: white;
+        color: black;
         transition: .4s;
         cursor: pointer;
     }
 </style>
 
 <body>
-    <h1>URL Shortner</h1>
+    <h1>URL Shortener.</h1>
     <% if (locals.id) { %>
         <p class="textplace">URL Generated: http://localhost:8000/url/<%= id %>
         </p>
         <% } %>
             <div>
                 <form method="POST" action="/url">
-                    <label>Enter your original URL</label>
+                    <label>Enter your original URL:</label>
                     <input type="text" placeholder="https://example.com" name="url">
                     <button type="submit">Generate</button>
                 </form>
