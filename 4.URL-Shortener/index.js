@@ -2,8 +2,10 @@ const express = require("express");
 const path = require("path")
 const { connectToMongoDB } = require('./connection')
 const URL = require("./models/url")
+
 const staticRoute = require('./routes/staticRouter')
 const urlRoute = require("./routes/routes")
+const userRoute = require("./routes/user")
 
 
 const app = express()
@@ -23,6 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
 app.use("/url", urlRoute);
+app.use('/user', userRoute)
 app.use("/", staticRoute);
 
 
