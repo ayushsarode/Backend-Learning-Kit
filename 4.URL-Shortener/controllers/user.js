@@ -1,4 +1,7 @@
 const User = require('../models/user')
+const { v4: uuidv4 } = require('uuid')
+const { setUser } = require('../service/auth');
+const { set } = require('mongoose');
 
 
 async function handleUserSignup(req, res) {
@@ -8,7 +11,7 @@ async function handleUserSignup(req, res) {
         email,
         password,
     })
-    return res.redirect('/');
+    return res.redirect('/login');
 
 }
 
@@ -19,6 +22,9 @@ async function handleUserLogin(req, res) {
         return res.render('login', {
             error: 'Invalid email or password',
         });
+    const sessionId = uuidv4()
+    setUser(sessionId, user)
+    res.cookie('uid', sessionId);
     return res.redirect('/');
 }
 
