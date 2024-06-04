@@ -2,13 +2,24 @@ const PORT = 8001;
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const { log } = require('console');
 
-const upload = multer({ dest: 'uploads/' });
+// const upload = multer({ dest: 'uploads/' });
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        return cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+        return cb(null, `${Date.now()}-${file.originalname}`);
+    },
+
+})
+
+const upload = multer({ storage:storage })
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
