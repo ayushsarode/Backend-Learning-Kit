@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
-const secret = 'Ayush@123'
+// server/auth.js
+require('dotenv').config();
+const secret = process.env.SECRET_KEY;
 
+console.log(process.env);
 
 function setUser(user) {  
   try {
